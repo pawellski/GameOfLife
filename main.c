@@ -14,7 +14,7 @@ int main(int argc, char **argv)
     printf("Bez bufora\nWiersze: %d\nKolumny: %d\n", (static_dimension.rows)-2, (static_dimension.columns)-2);
     printf("Z buforem\nWiersze: %d\nKolumny: %d\n", static_dimension.rows, static_dimension.columns);
 
-    //ALOKACJA PAMIÊCI
+    //ALOKACJA PAMIECI
     first_grid.cells = (char**)malloc(static_dimension.rows * sizeof(char*));
     second_grid.cells = (char**)malloc(static_dimension.rows * sizeof(char*));
     for(int i = 0; i < static_dimension.rows; i++)
@@ -23,10 +23,11 @@ int main(int argc, char **argv)
         second_grid.cells[i] = (char*)malloc(static_dimension.columns * sizeof(char));
     }
 
+
     //WCZYTANIE PLIKU
     fill_in_grid(argv[1], &first_grid);
 
-    //WYWIETLENIE WYNIKU
+    //WYŒWIETLENIE WYNIKU
     printf("Wczytany plik\n");
     for(int i=1; i<static_dimension.rows-1; i++)
     {
@@ -36,8 +37,20 @@ int main(int argc, char **argv)
         }
         printf("\n");
     }
+    //WYCZYSZCZENIE PLANSZY
+    to_clear(&second_grid, &static_dimension);
+    // WYŒWIETLENIE PLANSZY
+    printf("Wyczyszczony plik\n");
+    for(int i=1; i<static_dimension.rows-1; i++)
+    {
+        for(int j=1; j<static_dimension.columns-1; j++)
+        {
+            printf("%c ", second_grid.cells[i][j]);
+        }
+        printf("\n");
+    }
 
-    //ZWOLNIENIE PAMIÊCI
+    //ZWOLNIENIE PAMIECI
     for(int i=0; i<static_dimension.rows; i++)
     {
         free(first_grid.cells[i]);
