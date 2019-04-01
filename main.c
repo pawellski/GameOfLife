@@ -27,16 +27,9 @@ int main(int argc, char **argv)
     //WCZYTANIE PLIKU
     fill_in_grid(argv[1], &first_grid);
 
-    //WYŒWIETLENIE WYNIKU
-    printf("Wczytany plik\n");
-    for(int i=1; i<static_dimension.rows-1; i++)
-    {
-        for(int j=1; j<static_dimension.columns-1; j++)
-        {
-            printf("%c ", first_grid.cells[i][j]);
-        }
-        printf("\n");
-    }
+    //WYSWIETLENIE WCZYTANEJ PLANSZY
+    print(0, &first_grid, &static_dimension);
+	
     //WYCZYSZCZENIE PLANSZY
     to_clear(&second_grid, &static_dimension);
     // WYŒWIETLENIE PLANSZY
