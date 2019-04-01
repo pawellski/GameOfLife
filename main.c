@@ -9,6 +9,8 @@ int main(int argc, char **argv)
     grid_t second_grid;
     dimension_t static_dimension;
 
+    int count_generation = atoi(argv[2]);
+
     read_dimension(argv[1], &static_dimension);
 
     printf("Bez bufora\nWiersze: %d\nKolumny: %d\n", (static_dimension.rows)-2, (static_dimension.columns)-2);
@@ -32,16 +34,15 @@ int main(int argc, char **argv)
 	
     //WYCZYSZCZENIE PLANSZY
     to_clear(&second_grid, &static_dimension);
+	
     // WYŒWIETLENIE PLANSZY
     printf("Wyczyszczony plik\n");
-    for(int i=1; i<static_dimension.rows-1; i++)
-    {
-        for(int j=1; j<static_dimension.columns-1; j++)
-        {
-            printf("%c ", second_grid.cells[i][j]);
-        }
-        printf("\n");
-    }
+   
+   //WYSWIETLENIE WCZYTANEJ PLANSZY
+    print(0, &second_grid, &static_dimension);
+
+    //URUCHOMIENIE GRY
+    generation(count_generation, &static_dimension, &first_grid, &second_grid);
 
     //ZWOLNIENIE PAMIECI
     for(int i=0; i<static_dimension.rows; i++)
