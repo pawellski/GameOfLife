@@ -1,15 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "ReadFile.h"
+#include "Game.h"
 #include "Struct.h"
 
 int main(int argc, char **argv)
 {
+    int count_generation = atoi(argv[2]);
+    int write = atoi(argv[3]);
+    char write_file = argv[4];
+
     grid_t first_grid;
     grid_t second_grid;
     dimension_t static_dimension;
-
-    int count_generation = atoi(argv[2]);
 
     read_dimension(argv[1], &static_dimension);
 
@@ -25,26 +29,20 @@ int main(int argc, char **argv)
         second_grid.cells[i] = (char*)malloc(static_dimension.columns * sizeof(char));
     }
 
+    //CZYSZCZENIE TABLIC + ROBIENIE BUFORA
+    to_clear(&first_grid, &static_dimension);
+    to_clear(&second_grid, &static_dimension);
 
     //WCZYTANIE PLIKU
     fill_in_grid(argv[1], &first_grid);
 
     //WYSWIETLENIE WCZYTANEJ PLANSZY
-    print(&first_grid, &static_dimension);
-	
-    //WYCZYSZCZENIE PLANSZY
-    to_clear(&second_grid, &static_dimension);
-	
-    // WYŒWIETLENIE PLANSZY
-    printf("Wyczyszczony plik\n");
-   
-   //WYSWIETLENIE WCZYTANEJ PLANSZY
-    print(&second_grid, &static_dimension);
+    print(0, &first_grid, &static_dimension);
 
     //URUCHOMIENIE GRY
-    generation(count_generation, &static_dimension, &first_grid, &second_grid);
+    generation(count_generation, write, argv[4], &static_dimension, &first_grid, &second_grid);
 
-    //ZWOLNIENIE PAMIECI
+    //ZWOLNIENIE PAMIÊCI
     for(int i=0; i<static_dimension.rows; i++)
     {
         free(first_grid.cells[i]);
@@ -55,6 +53,7 @@ int main(int argc, char **argv)
     free(second_grid.cells);
     first_grid.cells = NULL;
     second_grid.cells = NULL;
+
 
     return 0;
 }
