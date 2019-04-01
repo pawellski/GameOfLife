@@ -30,7 +30,7 @@ int main(int argc, char **argv)
     fill_in_grid(argv[1], &first_grid);
 
     //WYSWIETLENIE WCZYTANEJ PLANSZY
-    print(0, &first_grid, &static_dimension);
+    print(&first_grid, &static_dimension);
 	
     //WYCZYSZCZENIE PLANSZY
     to_clear(&second_grid, &static_dimension);
@@ -39,7 +39,7 @@ int main(int argc, char **argv)
     printf("Wyczyszczony plik\n");
    
    //WYSWIETLENIE WCZYTANEJ PLANSZY
-    print(0, &second_grid, &static_dimension);
+    print(&second_grid, &static_dimension);
 
     //URUCHOMIENIE GRY
     generation(count_generation, &static_dimension, &first_grid, &second_grid);
