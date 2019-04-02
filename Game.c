@@ -47,6 +47,10 @@ void generation(int n, int writeOpt, char *fileOut, dimension_t *dim, grid_t *ma
         change( main_grid, util_grid, dim );
         to_clear( util_grid, dim, &syms2 );
     }
+    for(int i=0; i<dim->rows; i++)
+        free(ptr[i]);
+    free(ptr);
+    ptr = NULL;
 }
 
 char is_alive(int i, int j, char **main_ptr, symbols_t * syms)
