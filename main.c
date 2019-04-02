@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     char *fileOut = "out.txt";
     int writeOpt = 0;
 
-        while((opt = getopt(argc, argv, ":n:i:o:a:d:x:")) != -1 ){
+        while((opt = getopt(argc, argv, ":n:i:o:a:d:w:")) != -1 ){
         switch(opt){
         case 'n':
             count_generation = atoi(optarg);
@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
             syms.dead = *optarg;
             printf("syms.dead = %c\n", syms.dead);
             break;
-        case 'x':
+        case 'w':
             writeOpt = atoi(optarg);
             if(writeOpt < 0 || writeOpt > 2){
                 printf("Opcja --x musi byc liczba calkowita z przedzialu <0 ; 2>");
