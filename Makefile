@@ -1,6 +1,3 @@
-__start__: a.out
-	./a.out in.txt 10 0 out.txt
-
 a.out: main.o Game.o ReadFile.o WriteFile.o
 	cc main.o Game.o ReadFile.o WriteFile.o
 
