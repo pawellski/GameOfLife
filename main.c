@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
     syms.dead = '0';
     int opt;
     int count_generation = 30;
-    char *fileIn = "in.txt"; 
+    char *fileIn = "in.txt";
     char *fileOut = "out.txt";
     int writeOpt = 0;
 
@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
         case 'w':
             writeOpt = atoi(optarg);
             if(writeOpt < 0 || writeOpt > 2){
-                printf("Opcja --x musi byc liczba calkowita z przedzialu <0 ; 2>");
+                printf("Opcja --w musi byc liczba calkowita z przedzialu <0 ; 2>");
                 exit(EXIT_FAILURE);
             } else {
                 printf("writeOpt = %d\n", writeOpt);
