@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
     syms.dead = '0';
     int opt;
     int count_generation = 30;
-    char *fileIn;
+    char *fileIn = "in.txt"; 
     char *fileOut = "out.txt";
     int writeOpt = 0;
 
