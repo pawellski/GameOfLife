@@ -6,9 +6,6 @@
 
 void generate_all(int n, int writeOpt, char *fileOut, dimension_t *dim, grid_t *main_grid, grid_t *util_grid, symbols_t * syms)
 {
-    symbols_t syms2;
-    syms2.alive = syms->alive;
-    syms2.dead = syms->dead;
     char **ptr = (char*)malloc((dim->rows)*sizeof(char*));
     for(int i = 0; i<(dim->rows); i++)
         ptr[i] = &(main_grid->cells[i][0]);
@@ -18,7 +15,7 @@ void generate_all(int n, int writeOpt, char *fileOut, dimension_t *dim, grid_t *
         for(int i=1; i<dim->rows-1; i++)
         {
             for(int j=1; j<dim->columns-1; j++)
-                util_grid->cells[i][j] = is_alive(i, j, ptr, &syms2);
+                util_grid->cells[i][j] = is_alive(i, j, ptr, syms);
         }
 		switch(writeOpt)
         {
@@ -42,9 +39,9 @@ void generate_all(int n, int writeOpt, char *fileOut, dimension_t *dim, grid_t *
             printf("Plansza nie zmienia sie od %d generacji\n", it-1);
             break;
         }
-        to_clear( main_grid, dim, &syms2 );
+        to_clear( main_grid, dim, syms );
         change( main_grid, util_grid, dim );
-        to_clear( util_grid, dim, &syms2 );
+        to_clear( util_grid, dim, syms );
     }
     for(int i=0; i<dim->rows; i++)
         free(ptr[i]);
