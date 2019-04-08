@@ -72,7 +72,7 @@ int main(int argc, char *argv[])
     fill_in_grid(fileIn, &first_grid, &syms);
 
     //URUCHOMIENIE GRY
-    generation(count_generation, writeOpt, fileOut, &static_dimension, &first_grid, &second_grid, &syms);
+    generate_all(count_generation, writeOpt, fileOut, &static_dimension, &first_grid, &second_grid, &syms);
 
     free_grid( first_grid, static_dimension );
     free_grid( second_grid, static_dimension );

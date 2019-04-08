@@ -4,7 +4,7 @@
 #include "Game.h"
 
 
-void generation(int n, int writeOpt, char *fileOut, dimension_t *dim, grid_t *main_grid, grid_t *util_grid, symbols_t * syms)
+void generate_all(int n, int writeOpt, char *fileOut, dimension_t *dim, grid_t *main_grid, grid_t *util_grid, symbols_t * syms)
 {
     symbols_t syms2;
     syms2.alive = syms->alive;
