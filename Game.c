@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 #include "Game.h"
-
+#include "WriteFile.h"
 
 void generate_all(int n, int writeOpt, char *fileOut, dimension_t *dim, grid_t *main_grid, grid_t *util_grid, symbols_t * syms)
 {
@@ -20,13 +20,13 @@ void generate_all(int n, int writeOpt, char *fileOut, dimension_t *dim, grid_t *
 		switch(writeOpt)
         {
         case 0:
-            print(it, util_grid, dim);
+            print_to_screen(it, util_grid, dim);
             break;
         case 1:
             fill_in_file(it, fileOut, util_grid, dim);
             break;
         case 2:
-            print(it, util_grid, dim);
+            print_to_screen(it, util_grid, dim);
             fill_in_file(it, fileOut, util_grid, dim);
         default:
             break;
