@@ -1,7 +1,23 @@
 #ifndef GAME_H_INCLUDED
 #define GAME_H_INCLUDED
 
-#include "Struct.h"
+typedef struct grid
+{
+    char **cells;
+} grid_t;
+
+typedef struct dimension
+{
+    int rows;
+    int columns;
+} dimension_t;
+
+typedef struct symbols
+{
+    char alive;
+    char dead;
+} symbols_t;
+
 
 char is_alive( int i, int j, char ** ptr, symbols_t * syms );
 void generation( int n, int writeOpt, char *fileOut, dimension_t *dim, grid_t *main_grid, grid_t *util_grid, symbols_t * syms );
