@@ -115,3 +115,19 @@ int check(grid_t *check_1, grid_t *check_2, dimension_t *dim)
         return 1;
 }
 
+void innit_grid( grid_t * grid, dimension_t * dim, symbols_t * syms )
+{
+    grid->cells = (char**)malloc(dim->rows * sizeof(char*));
+    for(int i = 0; i < dim->rows; i++)
+        grid->cells[i] = (char*)malloc(dim->columns * sizeof(char));
+    to_clear(grid, dim, syms);
+}
+
+void free_grid( grid_t grid, dimension_t dim)
+{
+    for( int i = 0; i < dim.rows; i++ )
+        free( grid.cells[i] );
+    free( grid.cells );
+    grid.cells = NULL;
+}
+

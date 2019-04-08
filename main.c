@@ -67,37 +67,16 @@ int main(int argc, char *argv[])
     printf("Bez bufora\nWiersze: %d\nKolumny: %d\n", (static_dimension.rows)-2, (static_dimension.columns)-2);
     printf("Z buforem\nWiersze: %d\nKolumny: %d\n", static_dimension.rows, static_dimension.columns);
 
-    //ALOKACJA PAMIÊCI
-    first_grid.cells = (char**)malloc(static_dimension.rows * sizeof(char*));
-    second_grid.cells = (char**)malloc(static_dimension.rows * sizeof(char*));
-    for(int i = 0; i < static_dimension.rows; i++)
-    {
-        first_grid.cells[i] = (char*)malloc(static_dimension.columns * sizeof(char));
-        second_grid.cells[i] = (char*)malloc(static_dimension.columns * sizeof(char));
-    }
-
-    //CZYSZCZENIE TABLIC + ROBIENIE BUFORA
-    to_clear(&first_grid, &static_dimension, &syms);
-    to_clear(&second_grid, &static_dimension, &syms);
-
+    innit_grid( &first_grid, &static_dimension, &syms );
+    innit_grid( &second_grid, &static_dimension, &syms );
     //WCZYTANIE PLIKU
     fill_in_grid(fileIn, &first_grid, &syms);
 
     //URUCHOMIENIE GRY
     generation(count_generation, writeOpt, fileOut, &static_dimension, &first_grid, &second_grid, &syms);
 
-    //ZWOLNIENIE PAMIECI
-    for(int i=0; i<static_dimension.rows; i++)
-    {
-        free(first_grid.cells[i]);
-        free(second_grid.cells[i]);
-    }
-
-    free(first_grid.cells);
-    free(second_grid.cells);
-    first_grid.cells = NULL;
-    second_grid.cells = NULL;
-
+    free_grid( first_grid, static_dimension );
+    free_grid( second_grid, static_dimension );
 
     return 0;
 }
