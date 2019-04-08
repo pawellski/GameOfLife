@@ -4,7 +4,6 @@
 
 #include "ReadFile.h"
 #include "Game.h"
-#include "Struct.h"
 
 
 int main(int argc, char *argv[])

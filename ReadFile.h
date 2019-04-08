@@ -1,7 +1,7 @@
 #ifndef READFILE_H_INCLUDED
 #define READFILE_H_INCLUDED
 
-#include "Struct.h"
+#include "Game.h"
 
 
 void read_dimension( char *filename, dimension_t *dim, symbols_t * syms );

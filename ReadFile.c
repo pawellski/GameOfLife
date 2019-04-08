@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "Struct.h"
+#include "Game.h"
 #include "ReadFile.h"
 
 void read_dimension(char *filename, dimension_t *dim, symbols_t * syms )
