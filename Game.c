@@ -2,11 +2,11 @@
 #include <stdlib.h>
 
 #include "Game.h"
-
+#include "WriteFile.h"
 
 void generate_all(int n, int writeOpt, char *fileOut, dimension_t *dim, grid_t *main_grid, grid_t *util_grid, symbols_t * syms)
 {
-    char **ptr = (char*)malloc((dim->rows)*sizeof(char*));
+    char **ptr = (char**)malloc((dim->rows)*sizeof(char*));
     for(int i = 0; i<(dim->rows); i++)
         ptr[i] = &(main_grid->cells[i][0]);
 
