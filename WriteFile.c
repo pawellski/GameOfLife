@@ -3,7 +3,7 @@
 
 #include "WriteFile.h"
 
-void print(int n, grid_t *to_write, dimension_t *dim)
+void print_to_screen(int n, grid_t *to_write, dimension_t *dim)
 {
     printf("PLANSZA PO %d ITERACJI\n", n);
     for(int i=1; i<(dim->rows)-1; ++i)
