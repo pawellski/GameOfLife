@@ -3,9 +3,11 @@
 
 #include "Game.h"
 #include "WriteFile.h"
+#include "pnng.h"
 
 void generate_all(int n, int writeOpt, char *fileOut, dimension_t *dim, grid_t *main_grid, grid_t *util_grid, symbols_t * syms)
 {
+	char *file_name = "out.png";
     char **ptr = (char**)malloc((dim->rows)*sizeof(char*));
     for(int i = 0; i<(dim->rows); i++)
         ptr[i] = &(main_grid->cells[i][0]);
@@ -21,7 +23,8 @@ void generate_all(int n, int writeOpt, char *fileOut, dimension_t *dim, grid_t *
         {
         case 0:
             print_to_screen(it, util_grid, dim);
-            break;
+            png(*util_grid, file_name);
+	    break;
         case 1:
             fill_in_file(it, fileOut, util_grid, dim);
             break;
