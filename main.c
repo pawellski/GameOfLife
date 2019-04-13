@@ -43,9 +43,8 @@ int main(int argc, char *argv[])
             if(writeOpt < 0 || writeOpt > 2){
                 printf("Opcja --w musi byc liczba calkowita z przedzialu <0 ; 2>");
                 exit(EXIT_FAILURE);
-            } else {
+            } else 
                 break;
-            }
         case ':':
             printf("Option needs a value");
             break;
