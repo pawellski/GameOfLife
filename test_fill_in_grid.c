@@ -108,7 +108,25 @@ int main()
             first_grid.cells[i][j] = sym.dead;
     }
 
-    fill_in_grid(filename, &first_grid, &sym);
+    fill_in_grid(filename, &first_grid, &sym);    
+
+    printf("Plansza zadeklarowana w programie:\n");
+    for( int i = 0; i < ( sizeof(table) / sizeof(table[i])); i++ ){
+	    for( int j = 0; j < sizeof( table[i] ); j++ ){
+		    printf("%c ", table[i][j]);
+	    }
+	    printf("\n");
+    }
+    printf("\n");
+    printf("Plansza wypelniona przez funkcje:\n");
+    for( int i = 0; i < static_dimension.rows; i++ ){
+            for( int j = 0; j < static_dimension.columns; j++ ){
+                    printf("%c ", first_grid.cells[i][j]);
+            }
+            printf("\n");
+    }
+    printf("\n");
+
 
     for(int i=1; i<static_dimension.rows-1; i++)
     {

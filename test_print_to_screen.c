@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define ROWS 5
+#define COLUMNS 6
+
 typedef struct grid
 {
     char **cells;
@@ -35,8 +38,8 @@ int main()
     grid_t first_grid;
     dimension_t static_dimension;
 
-    static_dimension.rows = 4;
-    static_dimension.columns = 6;
+    static_dimension.rows = ROWS + 2;
+    static_dimension.columns = COLUMNS + 2;
 
     int n = 0;
 
@@ -56,6 +59,6 @@ int main()
     free(first_grid.cells);
     first_grid.cells = NULL;
 
-    printf("Jezeli na ekranie zostala wyswietlona macierz 2 x 4 wypelniona zerami.\nTest przeprowadzono pomyslnie!\n");
+    printf("Jezeli na ekranie zostala wyswietlona macierz %d x %d wypelniona zerami.\nTest przeprowadzono pomyslnie!\n", ROWS, COLUMNS);
         return 0;
 }

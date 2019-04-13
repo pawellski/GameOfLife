@@ -21,7 +21,7 @@ void generate_all(int n, int writeOpt, char *fileOut, dimension_t *dim, grid_t *
         {
         case 0:
             print_to_screen(it, util_grid, dim);
-            break;
+	    break;
         case 1:
             fill_in_file(it, fileOut, util_grid, dim);
             break;
