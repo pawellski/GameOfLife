@@ -5,10 +5,11 @@
 #include "WriteFile.h"
 #include "PNG.h"
 
-void generate_all(int n, int writeOpt, char *fileOut, dimension_t *dim, grid_t *main_grid, grid_t *util_grid, symbols_t * syms)
+int generate_all(int n, int writeOpt, char *fileOut, dimension_t *dim, grid_t *main_grid, grid_t *util_grid, symbols_t * syms)
 {
     char **ptr = (char**)malloc((dim->rows)*sizeof(char*));
-    for(int i = 0; i<dim->rows; i++)
+    int generations_done = 0;
+    for(int i = 0; i<(dim->rows); i++)
         ptr[i] = &(main_grid->cells[i][0]);
     for(int it=1; it<n+1; it++)
     {
@@ -35,6 +36,7 @@ void generate_all(int n, int writeOpt, char *fileOut, dimension_t *dim, grid_t *
 	default:
             break;
         }
+	generations_done++;
 
         if(check(main_grid, util_grid, dim) == 1)
             ;
@@ -49,6 +51,7 @@ void generate_all(int n, int writeOpt, char *fileOut, dimension_t *dim, grid_t *
     }
     free(ptr);
     ptr = NULL;
+    return generations_done;
 }
 
 char is_alive(int i, int j, char **main_ptr, symbols_t * syms)
