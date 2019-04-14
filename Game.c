@@ -8,12 +8,8 @@
 int generate_all(int n, int writeOpt, char *fileOut, dimension_t *dim, grid_t *main_grid, grid_t *util_grid, symbols_t * syms)
 {
     char **ptr = (char**)malloc((dim->rows)*sizeof(char*));
-<<<<<<< HEAD
     int generations_done = 0;
     for(int i = 0; i<(dim->rows); i++)
-=======
-    for(int i = 0; i<dim->rows; i++)
->>>>>>> fdd7afb492ca7dcbc2265229651fa6c59f4c378c
         ptr[i] = &(main_grid->cells[i][0]);
     for(int it=1; it<n+1; it++)
     {
@@ -32,14 +28,8 @@ int generate_all(int n, int writeOpt, char *fileOut, dimension_t *dim, grid_t *m
             break;
         case 2:
 	    png(util_grid, dim, syms, it);
-<<<<<<< HEAD
 	    break;
         default:
-=======
-            break;
-	default:
->>>>>>> fdd7afb492ca7dcbc2265229651fa6c59f4c378c
-            break;
         }
 	generations_done++;
 	printf("generations_done w funkcji generate_all: %d\n", generations_done);
