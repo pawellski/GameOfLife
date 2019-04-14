@@ -19,6 +19,15 @@ png_infop info_ptr;
 int number_of_passes;
 png_bytep * row_pointers;
 
+void free_pixels(void)
+{
+        png_destroy_write_struct(&png_ptr, &info_ptr);
+        for (int i = 0; i < height - 9; i +=10)
+                free(row_pointers[i]);
+        free(row_pointers);
+        row_pointers = NULL;
+}
+
 void make_png(char* file_name) {
   FILE *fp = fopen(file_name, "wb");
   if (!fp)
@@ -134,15 +143,7 @@ void describe_png(grid_t *util_grid, dimension_t *dim, symbols_t *syms)
     i++;
   }
 }
-a
-void free_pixels(void)
-{
-	png_destroy_write_struct(&png_ptr, &info_ptr);
-	for (int i = 0; i < height - 9; i +=10)
-    		free(row_pointers[i]);
-  	free(row_pointers);
-	//row_pointers = NULL;
-}
+
 
 void  png(grid_t *util_grid, dimension_t *dim, symbols_t *syms, int n)
 {
