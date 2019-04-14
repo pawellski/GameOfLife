@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
     syms.dead = '0';
     int opt;
     int count_generation = 30;
-    double delay = 1.00;a
+    double delay = 1.00;
     char *gifFilename = "out.gif";
     char *fileIn;
     char *fileOut = "out.txt";
