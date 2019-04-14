@@ -117,7 +117,6 @@ int main()
 	    }
 	    printf("\n");
     }
-    printf("\n");
     printf("Plansza wypelniona przez funkcje:\n");
     for( int i = 0; i < static_dimension.rows; i++ ){
             for( int j = 0; j < static_dimension.columns; j++ ){
@@ -125,8 +124,6 @@ int main()
             }
             printf("\n");
     }
-    printf("\n");
-
 
     for(int i=1; i<static_dimension.rows-1; i++)
     {
@@ -144,8 +141,8 @@ int main()
 
     if(count == ((static_dimension.rows-2)*(static_dimension.columns-2)))
     {
-        printf("Przy porownaniu 2 plansz (jedna zapelniona poprzez funkcje, druga przygotowana do porownania) otrzymalismy\n");
-        printf("%d elementow takich samych na tych samych pozycjach w macierzy 2 x 4.\n", count);
+        printf("Przy porownaniu 2 plansz (jedna zapelniona poprzez funkcje,\ndruga przygotowana do porownania) otrzymalismy %d elementow\n", count);
+        printf("takich samych na tych samych pozycjach w macierzy 2 x 4.\n");
         printf("Test zakonczony pomyslnie!\n");
         return 0;
     }
