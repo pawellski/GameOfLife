@@ -16,8 +16,8 @@ int main(int argc, char *argv[])
     int opt;
     int count_generation = 30;
     double delay = 1.00;
-    char *gifFilename = "life.gif";
-    char *fileIn = "in.txt";
+    char *gifFilename = "out.gif";
+    char *fileIn;
     char *fileOut = "out.txt";
     int writeOpt = 2;
     int generations_done;
