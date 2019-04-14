@@ -8,10 +8,13 @@
 int generate_all(int n, int writeOpt, char *fileOut, dimension_t *dim, grid_t *main_grid, grid_t *util_grid, symbols_t * syms)
 {
     char **ptr = (char**)malloc((dim->rows)*sizeof(char*));
+<<<<<<< HEAD
     int generations_done = 0;
     for(int i = 0; i<(dim->rows); i++)
+=======
+    for(int i = 0; i<dim->rows; i++)
+>>>>>>> fdd7afb492ca7dcbc2265229651fa6c59f4c378c
         ptr[i] = &(main_grid->cells[i][0]);
-
     for(int it=1; it<n+1; it++)
     {
         for(int i=1; i<dim->rows-1; i++)
@@ -29,8 +32,13 @@ int generate_all(int n, int writeOpt, char *fileOut, dimension_t *dim, grid_t *m
             break;
         case 2:
 	    png(util_grid, dim, syms, it);
+<<<<<<< HEAD
 	    break;
         default:
+=======
+            break;
+	default:
+>>>>>>> fdd7afb492ca7dcbc2265229651fa6c59f4c378c
             break;
         }
 	generations_done++;
@@ -47,8 +55,6 @@ int generate_all(int n, int writeOpt, char *fileOut, dimension_t *dim, grid_t *m
         change( main_grid, util_grid, dim );
         to_clear( util_grid, dim, syms );
     }
-    for(int i=0; i<dim->rows; i++)
-        free(ptr[i]);
     free(ptr);
     ptr = NULL;
     return generations_done;
@@ -60,7 +66,7 @@ char is_alive(int i, int j, char **main_ptr, symbols_t * syms)
     for(int a=-1; a<2; a++)
     {
         for(int b=-1; b<2; b++)
-            if(main_ptr[i+a][j+b] == syms->alive)
+            if(main_ptr[i + a][j + b] == syms->alive)
                 alive_number++;
     }
 
@@ -126,7 +132,7 @@ void innit_grid( grid_t * grid, dimension_t * dim, symbols_t * syms )
 
 void free_grid( grid_t grid, dimension_t dim)
 {
-    for( int i = 0; i < dim.rows; i++ )
+    for( int i = 0;  i < dim.rows; i++ )
         free( grid.cells[i] );
     free( grid.cells );
     grid.cells = NULL;
