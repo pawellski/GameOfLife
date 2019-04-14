@@ -8,9 +8,8 @@
 void generate_all(int n, int writeOpt, char *fileOut, dimension_t *dim, grid_t *main_grid, grid_t *util_grid, symbols_t * syms)
 {
     char **ptr = (char**)malloc((dim->rows)*sizeof(char*));
-    for(int i = 0; i<(dim->rows); i++)
+    for(int i = 0; i<dim->rows; i++)
         ptr[i] = &(main_grid->cells[i][0]);
-
     for(int it=1; it<n+1; it++)
     {
         for(int i=1; i<dim->rows-1; i++)
@@ -28,7 +27,8 @@ void generate_all(int n, int writeOpt, char *fileOut, dimension_t *dim, grid_t *
             break;
         case 2:
 	    png(util_grid, dim, syms, it);
-        default:
+            break;
+	default:
             break;
         }
 
@@ -43,8 +43,6 @@ void generate_all(int n, int writeOpt, char *fileOut, dimension_t *dim, grid_t *
         change( main_grid, util_grid, dim );
         to_clear( util_grid, dim, syms );
     }
-    for(int i=0; i<dim->rows; i++)
-        free(ptr[i]);
     free(ptr);
     ptr = NULL;
 }
@@ -55,7 +53,7 @@ char is_alive(int i, int j, char **main_ptr, symbols_t * syms)
     for(int a=-1; a<2; a++)
     {
         for(int b=-1; b<2; b++)
-            if(main_ptr[i+a][j+b] == syms->alive)
+            if(main_ptr[i + a][j + b] == syms->alive)
                 alive_number++;
     }
 
@@ -121,7 +119,7 @@ void innit_grid( grid_t * grid, dimension_t * dim, symbols_t * syms )
 
 void free_grid( grid_t grid, dimension_t dim)
 {
-    for( int i = 0; i < dim.rows; i++ )
+    for( int i = 0;  i < dim.rows; i++ )
         free( grid.cells[i] );
     free( grid.cells );
     grid.cells = NULL;
