@@ -1,2 +1,2 @@
 # GameOfLife
-Game of Life to symulator gry w życie Johna Conwaya
+Projekt wykonywany w ramach przedmiotu "Jezyki i metody programowania 2".
