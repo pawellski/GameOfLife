@@ -3,6 +3,7 @@
 
 #include "Game.h"
 #include "WriteFile.h"
+#include "PNG.h"
 
 void generate_all(int n, int writeOpt, char *fileOut, dimension_t *dim, grid_t *main_grid, grid_t *util_grid, symbols_t * syms)
 {
@@ -17,7 +18,7 @@ void generate_all(int n, int writeOpt, char *fileOut, dimension_t *dim, grid_t *
             for(int j=1; j<dim->columns-1; j++)
                 util_grid->cells[i][j] = is_alive(i, j, ptr, syms);
         }
-		switch(writeOpt)
+	switch(writeOpt)
         {
         case 0:
             print_to_screen(it, util_grid, dim);
@@ -26,8 +27,7 @@ void generate_all(int n, int writeOpt, char *fileOut, dimension_t *dim, grid_t *
             fill_in_file(it, fileOut, util_grid, dim);
             break;
         case 2:
-            print_to_screen(it, util_grid, dim);
-            fill_in_file(it, fileOut, util_grid, dim);
+	    png(util_grid, dim, syms, it);
         default:
             break;
         }

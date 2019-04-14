@@ -4,6 +4,7 @@
 
 #include "ReadFile.h"
 #include "Game.h"
+#include "PNG.h"
 
 
 int main(int argc, char *argv[])
@@ -62,6 +63,7 @@ int main(int argc, char *argv[])
 
     innit_grid( &first_grid, &static_dimension, &syms );
     innit_grid( &second_grid, &static_dimension, &syms );
+
     //WCZYTANIE PLIKU
     fill_in_grid(fileIn, &first_grid, &syms);
 
