@@ -30,6 +30,7 @@ int generate_all(int n, int writeOpt, char *fileOut, dimension_t *dim, grid_t *m
 	    png(util_grid, dim, syms, it);
 	    break;
         default:
+	    break;
         }
 	generations_done++;
 	printf("generations_done w funkcji generate_all: %d\n", generations_done);
