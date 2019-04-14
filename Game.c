@@ -116,7 +116,7 @@ int check(grid_t *check_1, grid_t *check_2, dimension_t *dim)
         return 1;
 }
 
-void innit_grid( grid_t * grid, dimension_t * dim, symbols_t * syms )
+void init_grid( grid_t * grid, dimension_t * dim, symbols_t * syms )
 {
     grid->cells = (char**)malloc(dim->rows * sizeof(char*));
     for(int i = 0; i < dim->rows; i++)

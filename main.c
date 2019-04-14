@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
     syms.dead = '0';
     int opt;
     int count_generation = 30;
-    double delay = 1.00;
+    double delay = 1.00;a
     char *gifFilename = "out.gif";
     char *fileIn;
     char *fileOut = "out.txt";
@@ -85,8 +85,8 @@ int main(int argc, char *argv[])
 
     read_dimension( fileIn, &static_dimension, &syms);
 
-    innit_grid( &first_grid, &static_dimension, &syms );
-    innit_grid( &second_grid, &static_dimension, &syms );
+    init_grid( &first_grid, &static_dimension, &syms );
+    init_grid( &second_grid, &static_dimension, &syms );
 
     //WCZYTANIE PLIKU
     fill_in_grid(fileIn, &first_grid, &syms);
