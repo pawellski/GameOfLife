@@ -7,11 +7,11 @@ main.o: main.c Game.h ReadFile.h WriteFile.h
 Game.o: Game.c Game.h WriteFile.h PNG.h
 	cc -c Game.c -lpng
 
-ReadFile.o: ReadFile.c ReadFile.h
+ReadFile.o: ReadFile.c ReadFile.h Game.h
 	cc -c ReadFile.c
 
-WriteFile.o: WriteFile.c WriteFile.h
+WriteFile.o: WriteFile.c WriteFile.h Game.h
 	cc -c WriteFile.c
 
-PNG.o: PNG.c PNG.h
+PNG.o: PNG.c PNG.h Game.h
 	cc -c PNG.c -lpng
