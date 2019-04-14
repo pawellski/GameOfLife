@@ -22,46 +22,64 @@ png_bytep * row_pointers;
 void make_png(char* file_name) {
   FILE *fp = fopen(file_name, "wb");
   if (!fp)
-    printf("[write_png_file] File %s could not be opened for writing", file_name);
+  {
+	  free_pixels();
+	  printf("[write_png_file] File %s could not be opened for writing", file_name);
+  }
 
   png_ptr = png_create_write_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
 
   if (!png_ptr)
-    printf("[write_png_file] png_create_write_struct failed");
+  {
+	  free_pixels();
+	  printf("[write_png_file] png_create_write_struct failed");
+  }
 
   info_ptr = png_create_info_struct(png_ptr);
+  
   if (!info_ptr)
-    printf("[write_png_file] png_create_info_struct failed");
+  {
+	  free_pixels();
+	  printf("[write_png_file] png_create_info_struct failed");
+  }
 
   if (setjmp(png_jmpbuf(png_ptr)))
-    printf("[write_png_file] Error during init_io");
+  {
+	  free_pixels();
+	  printf("[write_png_file] Error during init_io");
+  }
 
   png_init_io(png_ptr, fp);
 
   if (setjmp(png_jmpbuf(png_ptr)))
-    printf("[write_png_file] Error during writing header");
+  {
+	  free_pixels();
+	  printf("[write_png_file] Error during writing header");
+  }
 
   png_set_IHDR(png_ptr, info_ptr, width, height,
-   bit_depth, color_type, PNG_INTERLACE_NONE,
-   PNG_COMPRESSION_TYPE_BASE, PNG_FILTER_TYPE_BASE);
+  bit_depth, color_type, PNG_INTERLACE_NONE,
+  PNG_COMPRESSION_TYPE_BASE, PNG_FILTER_TYPE_BASE);
 
   png_write_info(png_ptr, info_ptr);
 
   if (setjmp(png_jmpbuf(png_ptr)))
-    printf("[write_png_file] Error during writing bytes");
+  {
+	  free_pixels();
+	  printf("[write_png_file] Error during writing bytes");
+  }
 
   png_write_image(png_ptr, row_pointers);
 
   if (setjmp(png_jmpbuf(png_ptr)))
-    printf("[write_png_file] Error during end of write");
+  {
+	  free_pixels();
+	  printf("[write_png_file] Error during end of write");
+  }
 
   png_write_end(png_ptr, NULL);
 
-  png_destroy_write_struct(&png_ptr, &info_ptr);
-
-  for (int i = 0; i < height - 9; i +=10)
-    free(row_pointers[i]);
-  free(row_pointers);
+  free_pixels();
 
   fclose(fp);
 }
@@ -116,7 +134,15 @@ void describe_png(grid_t *util_grid, dimension_t *dim, symbols_t *syms)
     i++;
   }
 }
-
+a
+void free_pixels(void)
+{
+	png_destroy_write_struct(&png_ptr, &info_ptr);
+	for (int i = 0; i < height - 9; i +=10)
+    		free(row_pointers[i]);
+  	free(row_pointers);
+	//row_pointers = NULL;
+}
 
 void  png(grid_t *util_grid, dimension_t *dim, symbols_t *syms, int n)
 {
