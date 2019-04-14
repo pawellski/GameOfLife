@@ -24,9 +24,13 @@ void generate_all(int n, int writeOpt, char *fileOut, dimension_t *dim, grid_t *
 	    break;
         case 1:
             fill_in_file(it, fileOut, util_grid, dim);
-            break;
+            if(it == n)
+		    printf("Zapisano %d iteracji do pliku.\n", n);
+	    break;
         case 2:
 	    png(util_grid, dim, syms, it);
+	    if(it == n)
+		    printf("Zapisano %d obrazów do folderu Obrazy_PNG.\n", n);
             break;
 	default:
             break;
