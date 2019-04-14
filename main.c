@@ -20,11 +20,7 @@ int main(int argc, char *argv[])
     char *fileIn = "in.txt";
     char *fileOut = "out.txt";
     int writeOpt = 2;
-    int generations_done = 0;
-
-    system("cd Obrazy_PNG");
-    system("rm -rf ~/GameOfLife/Obrazy_PNG/*");
-    system("cd ..");
+    int generations_done;
 
         while((opt = getopt(argc, argv, ":n:g:l:i:o:a:d:w:h")) != -1 ){
         switch(opt){
@@ -95,10 +91,11 @@ int main(int argc, char *argv[])
     //WCZYTANIE PLIKU
     fill_in_grid(fileIn, &first_grid, &syms);
 
+    delete_png_from_dir();
+
     //URUCHOMIENIE GRY
     generations_done = generate_all(count_generation, writeOpt, fileOut, &static_dimension, &first_grid, &second_grid, &syms);
     
-    printf("generations_done w mainie: %d\n", generations_done);
     if(writeOpt == 2)
 	    make_gif_command( delay, generations_done, gifFilename );
 	    

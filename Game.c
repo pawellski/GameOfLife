@@ -33,7 +33,6 @@ int generate_all(int n, int writeOpt, char *fileOut, dimension_t *dim, grid_t *m
 	    break;
         }
 	generations_done++;
-	printf("generations_done w funkcji generate_all: %d\n", generations_done);
 
         if(check(main_grid, util_grid, dim) == 1)
             ;

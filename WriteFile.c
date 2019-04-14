@@ -43,3 +43,11 @@ make_gif_command( double delay, int gen_num, char *gifFilename)
 	const char * command = str;
 	system(command);
 }
+
+void
+delete_png_from_dir( void )
+{
+	system("cd Obrazy_PNG");
+   	system("rm -rf ~/GameOfLife/Obrazy_PNG/*");
+    	system("cd ..");
+}
