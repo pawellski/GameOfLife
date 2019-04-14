@@ -67,8 +67,8 @@ void make_png(char* file_name) {
 }
 void describe_png(grid_t *util_grid, dimension_t *dim, symbols_t *syms)
 {
-  width = (dim->columns - 1)  * 10;
-  height = (dim->rows - 1) * 10;
+  width = (dim->columns - 2)  * 10;
+  height = (dim->rows - 2) * 10;
   bit_depth = 8;
   color_type = PNG_COLOR_TYPE_GRAY;
   number_of_passes = 7;
